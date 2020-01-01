@@ -1,8 +1,39 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div id="app" class="bg-gray-100 font-sans w-full min-h-screen m-0">
+    <div class="bg-white shadow">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between py-4">
+          <div>
+            <img alt="Vue logo" src="@/assets/logo.png" class="w-10 h-10" />
+          </div>
+
+          <div class="hidden sm:flex sm:items-center">
+            <router-link
+              to="/"
+              class="text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4"
+              >Home</router-link
+            >
+            <router-link
+              to="/about"
+              class="text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4"
+              >About</router-link
+            >
+          </div>
+
+          <div class="hidden sm:flex sm:items-center">
+            <a
+              href="#"
+              class="text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4"
+              >Sign in</a
+            >
+            <a
+              href="#"
+              class="text-gray-800 text-sm font-semibold border px-4 py-2 rounded-lg hover:text-purple-600 hover:border-purple-600"
+              >Sign up</a
+            >
+          </div>
+        </div>
+      </div>
     </div>
     <router-view />
   </div>
@@ -15,18 +46,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>
