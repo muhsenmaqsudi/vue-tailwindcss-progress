@@ -7353,6 +7353,13 @@ table@^5.2.3:
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
+tailwindcss-animations@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-animations/-/tailwindcss-animations-1.0.0.tgz#45c99b6914f2a69744e51d4cdc55f2d9691dec14"
+  integrity sha512-dPAo/rRC2Cqupte3tVjoR8gTXyZjyApAmPD6LdiTRRQ79lNx0aCCMTDo86T8Ulif7N48mrMcj/eebf/a3QV6TQ==
+  dependencies:
+    lodash "^4.17.15"
+
 tailwindcss-transforms@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/tailwindcss-transforms/-/tailwindcss-transforms-2.2.0.tgz#3e0e594a2b34a056714d5fe539e2ace3226edf28"
