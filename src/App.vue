@@ -9,6 +9,11 @@ subcategory: Application UI
 <template>
   <div class="h-screen flex">
     <div
+      :class="sidebarOpen ? 'block' : 'hidden'"
+      class="fixed inset-0 bg-black opacity-25 lg:hidden"
+      @click="sidebarOpen = false"
+    ></div>
+    <div
       :class="
         sidebarOpen
           ? 'translate-x-0 animation-ease-out animation-normal'
@@ -17,9 +22,29 @@ subcategory: Application UI
       class="fixed z-30 inset-y-0 left-0 w-64 px-8 py-4 bg-gray-100 border-r border-r overflow-auto lg:static lg:inset-auto lg:translate-x-0"
     >
       <div class="-mx-3 pl-3 pr-1 flex items-center justify-between">
-        <span>
-          <img class="h-8 w-8" src="@/assets/logo.png" alt="vuejs logo" />
-        </span>
+        <div class="flex">
+          <img class="h-8 w-8 mr-2" src="@/assets/logo.png" alt="vuejs logo" />
+          <svg class="h-8 w-8" viewBox="0 0 64 64">
+            <defs>
+              <linearGradient
+                x1="0"
+                y1="-21.333"
+                y2="85.333"
+                id="a"
+                x2="64"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#2383ae" offset="0%" />
+                <stop stop-color="#6dd7b9" offset="100%" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M16 25.6c2.133-8.533 7.467-12.8 16-12.8 12.8 0 14.4 9.6 20.8 11.2 4.267 1.067 8-.533 11.2-4.8C61.867 27.733 56.533 32 48 32c-12.8 0-14.4-9.6-20.8-11.2-4.267-1.067-8 .533-11.2 4.8zM0 44.8C2.133 36.267 7.467 32 16 32c12.8 0 14.4 9.6 20.8 11.2 4.267 1.067 8-.533 11.2-4.8-2.133 8.533-7.467 12.8-16 12.8-12.8 0-14.4-9.6-20.8-11.2-4.267-1.067-8 .533-11.2 4.8z"
+              fill="url(#a)"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </div>
         <button class="text-gray-700 lg:hidden" @click="sidebarOpen = false">
           <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
             <path
@@ -100,7 +125,7 @@ subcategory: Application UI
         <header>
           <div class="px-6">
             <div class="flex justify-between items-center py-3 border-b border-gray-200">
-              <div class="flex flex-1">
+              <div class="flex-1 min-w-0 flex ">
                 <button class="text-gray-600 lg:hidden" @click="sidebarOpen = true">
                   <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
                     <path
@@ -111,7 +136,7 @@ subcategory: Application UI
                     />
                   </svg>
                 </button>
-                <div class="ml-3 relative w-64 lg:ml-0">
+                <div class="flex-shrink ml-3 relative w-64 lg:ml-0">
                   <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
                     <svg class="h-6 w-6 text-gray-600" viewBox="0 0 24 24" fill="none">
                       <path
@@ -128,7 +153,7 @@ subcategory: Application UI
                   />
                 </div>
               </div>
-              <div class="flex items-center">
+              <div class="ml-6 flex-shrink-0 flex items-center">
                 <button>
                   <svg class="h-6 w-6 text-gray-600" viewBox="0 0 24 24" fill="none">
                     <path
@@ -197,12 +222,12 @@ subcategory: Application UI
                     </svg>
                   </button>
                   <button class="-m-px px-2 py-1 bg-white rounded shadow">
-                    <svg class="h-6 w-6 text-gray-600" viewBox="0 0 24 24" fill="none">
+                    <svg class="py-1 h-6 w-6 text-gray-600" viewBox="0 0 978 978">
                       <path
                         stroke="currentColor"
                         stroke-width="2"
                         stroke-linecap="round"
-                        d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 01-2"
+                        d="M0 903c0 33.1 26.9 60 60 60h160c33.1 0 60-26.9 60-60V75c0-33.1-26.9-60-60-60H60C26.9 15 0 41.9 0 75v828zM409 15c-33.1 0-60 26.9-60 60v828c0 33.1 26.9 60 60 60h160c33.1 0 60-26.9 60-60V75c0-33.1-26.9-60-60-60H409zM758 963h160c33.1 0 60-26.9 60-60V75c0-33.1-26.9-60-60-60H758c-33.1 0-60 26.9-60 60v828c0 33.1 26.9 60 60 60z"
                       />
                     </svg>
                   </button>
@@ -223,8 +248,10 @@ subcategory: Application UI
               </div>
             </div>
           </div>
-          <div class="flex p-1 border-t border-b bg-gray-200 sm:hidden">
-            <button class="-m-px px-2 py-1 rounded">
+          <div class="flex px-4 p-1 border-t border-b bg-gray-200 sm:hidden">
+            <button
+              class="inline-flex justify-center items-center w-1/2 px-2 py-1 rounded"
+            >
               <svg class="h-6 w-6 text-gray-600" viewBox="0 0 24 24" fill="none">
                 <path
                   stroke="currentColor"
@@ -233,16 +260,20 @@ subcategory: Application UI
                   d="M4 6h16M4 10h16M4 14h16M4 18h16"
                 />
               </svg>
+              <span class="ml-2 text-sm font-medium text-gray-600">List</span>
             </button>
-            <button class="-m-px px-2 py-1 bg-white rounded shadow">
-              <svg class="h-6 w-6 text-gray-600" viewBox="0 0 24 24" fill="none">
+            <button
+              class="inline-flex justify-center items-center w-1/2 px-2 py-1 bg-white rounded shadow"
+            >
+              <svg class="py-1 h-6 w-6 text-gray-600" viewBox="0 0 978 978">
                 <path
                   stroke="currentColor"
                   stroke-width="2"
                   stroke-linecap="round"
-                  d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0"
+                  d="M0 903c0 33.1 26.9 60 60 60h160c33.1 0 60-26.9 60-60V75c0-33.1-26.9-60-60-60H60C26.9 15 0 41.9 0 75v828zM409 15c-33.1 0-60 26.9-60 60v828c0 33.1 26.9 60 60 60h160c33.1 0 60-26.9 60-60V75c0-33.1-26.9-60-60-60H409zM758 963h160c33.1 0 60-26.9 60-60V75c0-33.1-26.9-60-60-60H758c-33.1 0-60 26.9-60 60v828c0 33.1 26.9 60 60 60z"
                 />
               </svg>
+              <span class="ml-2 text-sm font-medium text-gray-900">Board</span>
             </button>
           </div>
         </header>
